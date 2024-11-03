@@ -1,0 +1,47 @@
+[
+  {
+    "name"       : "Digital Catalyst",
+    "description": "Accelerating business transformation through cutting-edge technology solutions.",
+    "members"    : [{"role": "supervisor", "id": "arma", "name": "Doğa Armangil"}]
+  },
+  {
+    "name"       : "TechNexus",
+    "description": "Connecting businesses to the future with innovative IT strategies.",
+    "members"    : [{"role": "supervisor", "id": "arma", "name": "Doğa Armangil"}]
+  },
+  {
+    "name"       : "InnovateIT",
+    "description": "Driving innovation and efficiency with tailored IT solutions.",
+    "members"    : [{"role": "supervisor", "id": "arma", "name": "Doğa Armangil"}]
+  },
+  {
+    "name"       : "CyberShield",
+    "description": "Protecting your digital assets with robust cybersecurity measures.",
+    "members"    : [{"role": "supervisor", "id": "arma", "name": "Doğa Armangil"}]
+  },
+  {
+    "name"       : "CloudCompass",
+    "description": "Navigating the cloud landscape with expert guidance and implementation.",
+    "members"    : [{"role": "supervisor", "id": "arma", "name": "Doğa Armangil"}]
+  },
+  {
+    "name"       : "DataDriven",
+    "description": "Unlocking the power of data through advanced analytics and insights.",
+    "members"    : [{"role": "supervisor", "id": "arma", "name": "Doğa Armangil"}]
+  },
+  {
+    "name"       : "AgileOps",
+    "description": "Optimizing business operations with agile methodologies and IT tools.",
+    "members"    : [{"role": "supervisor", "id": "arma", "name": "Doğa Armangil"}]
+  },
+  {
+    "name"       : "SecureSphere",
+    "description": "Safeguarding your digital environment with comprehensive security solutions.",
+    "members"    : [{"role": "supervisor", "id": "arma", "name": "Doğa Armangil"}]
+  },
+  {
+    "name"       : "FutureProofIT",
+    "description": "Future-proofing your business with scalable and adaptable IT infrastructure.",
+    "members"    : [{"role": "supervisor", "id": "arma", "name": "Doğa Armangil"}]
+  }
+]

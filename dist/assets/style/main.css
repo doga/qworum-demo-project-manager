@@ -1,4 +1,29 @@
-body {
+:root {
+  --md-icon-size: 48px;
+  /* 
+  --md-sys-color-primary: olive;
+  --md-ref-typeface-brand: 'Open Sans';
+  --md-sys-color-secondary: tomato;
+  --md-ref-typeface-plain: system-ui; 
+  */
+}
+
+#user-profile  {
+  float: right;
+}
+
+body {padding: 10%;}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+
+/* body {
   font-size: 200%;
   padding: 3em;
 }
@@ -29,4 +54,4 @@ li {
 
 .item-title  {
   text-transform: capitalize;
-}
+} */

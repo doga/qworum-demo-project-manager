@@ -1,6 +1,6 @@
 {
-  "name"      : "Qworum application template",
-  "short_name": "Qworum app",
+  "name"      : "Project management application",
+  "short_name": "Projects",
   "start_url" : "/",
   "display"   : "standalone"
 }
