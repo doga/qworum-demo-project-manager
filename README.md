@@ -1,35 +1,73 @@
 ![Qworum logo and name](https://raw.githubusercontent.com/doga/qworum-website/master/build/assets/images/logos/Qworum-logo-and-name.svg "Qworum logo and name")
 
-# Basic template for Qworum-based web applications
+# Project management application demo
 
-This is a template for a website that uses [Qworum](https://qworum.net)'s advanced web browser capabilities.
+This demo application shows how the [Qworum](https://qworum.net) platform helps build __highly integrated IT systems__ on top of fragmented application landscapes.
 
-This template is:
+Key concepts:
 
-- _Multi-language_, with language-independent API endpoint paths.
-- _Versioned_. Indeed, Qworum applications are structured as Qworum APIs, and versioned APIs ensure that other applications that depend on this one will not break after an update.
+- Application integration.
+- Distributed applications.
 
-This project has a [companion project](https://github.com/doga/qworum-application-template-with-semantic-data) that uses semantic data (RDF) instead of JSON.
+## Qworum-based project management (PM) application
 
-## The "Hello World" Qworum application
+This application allows project managers to use a remote HCM service for choosing project members.
 
-This website implements a Qworum API that has 2 endpoints:
+And a common identity service is used by both services for authenticating the end-users.
 
-- the `home` endpoint, which is an application, and
-- the `view-item` endpoint, called by `home`.
+This application is structured as a Qworum API, and it has the following endpoints:
 
-Here is the directory structure:
+- `home` is the application's main entry point.
+- `view-project` which is called by `home`; other remote services/applications can also call this endpoint.
 
-- Directories with 2-letter names such as `en` contain language-specific versions of the API endpoints.
-- `assets` contains resources used by the web pages.
-- All other directories (`home`, `view-item`) are the official endpoint paths; they are only used for redirecting API calls to language-specific endpoint versions.
+## Dependencies
 
-## To do
+This Qworum application depends on these Qworum applications/services:
 
-Implement a login endpoint:
+- [User authentication service](https://github.com/doga/qworum-demo-auth)
+- [HCM application](https://github.com/doga/qworum-demo-hcm)
 
-- [Launching a New Tab for OpenID Connect Login](https://g.co/gemini/share/e260edfb5045)
-- [Common Login Protocols for Business Applications](https://g.co/gemini/share/2e761f775cd6)
+In this demo, all three services/applications are hosted on different web servers, but colocating different Qworum APIs on the same server is allowed as well.
+
+```mermaid
+---
+title: Dependency diagram
+---
+classDiagram
+
+class Auth{
+    +JSON profile
+    +signIn()
+    +viewProfile()
+}
+
+class HCM{
+    +Auth user
+    +pickTeam()
+}
+
+class PM{
+    +Auth user
+    +HCM hcm
+    +home()
+    +viewProject(projectId)
+}
+
+PM --> Auth
+HCM --> Auth
+PM --> HCM
+```
+
+## Running this demo locally
+
+This is one way to do it:
+
+1. Install [Visual Studio Code](https://code.visualstudio.com/)
+1. Install the [Live Server extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+1. Start Live Server for the Auth project and the HCM project.
+1. Lastly do this for this project: Left-click on the `dist/index.html` file and choose _Open with Live Server_ on the pop-up menu that appears.
+
+This way of running the demo ensures that each web server runs on the right local TCP port.
 
 ## License
 

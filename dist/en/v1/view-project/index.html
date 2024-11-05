@@ -1,22 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/assets/style/main.css" rel="stylesheet">
-  <title>View item</title>
-	<link rel="manifest" href="/app.webmanifest">
-</head>
-<body>
-  <nav>
-    <button id='close' class='close'></button>
-  </nav>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+      {
+        "imports": {
+          "@material/web/": "https://esm.run/@material/web/"
+        }
+      }
+    </script>
+    <script type="module">
+      import '@material/web/all.js';
+      import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+      document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+    <title>Project details</title>
+    <link href="/assets/style/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1 class="md-typescale-display-medium">Project management application</h1>
 
-  <h1 id="item-title" class="item-title">Item</h1>
-  <p id="item-details" class="item-details"></p>
+    <section id="project-details">
+      <h2>Project details</h2>
 
-  <script type="module" src="/assets/js/view-item.js"></script>
+      <md-list
+        id="project-list"
+        style="max-width: 500px;"
+      >
+      </md-list>
+      
+      <section id="team">
+        <h3>Team</h3>
 
-</body>
+        <md-outlined-icon-button id="add-member" class="hide">
+          <md-icon>person_add</md-icon>
+        </md-outlined-icon-button>
+
+        <br><br>
+
+        <md-list
+          id="team-list"
+          style="max-width: 500px;"
+        >
+        </md-list>
+
+      </section>
+
+
+      <br><br>
+
+      <md-outlined-button id="return-button">Return</md-outlined-button>
+    </section>
+
+
+    <!-- <style>
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    </style> -->
+
+    <script type="module" src="/assets/js/view-project.js"></script>
+
+  </body>
 </html>

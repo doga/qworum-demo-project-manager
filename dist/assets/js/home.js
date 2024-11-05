@@ -1,5 +1,6 @@
 import { Projects, Project, Member, Role } from "./modules/projects.mjs"; 
 import { authServiceUrl } from './modules/dependency-urls.mjs';
+import { requireUser } from "./modules/require-user.mjs";
 import { QworumScript, Qworum } from './deps.mjs';
 
 const
@@ -17,14 +18,16 @@ Try      = QworumScript.Try.build,
 // Script
 Script = QworumScript.Script.build;
 
-
-build();
+await build();
 
 async function build() {
-  console.debug('home');
-
-  const viewUserProfileButton = document.getElementById('view-user-profile-button');
-
+  const 
+  user = await requireUser(), // Auth wall
+  viewUserProfileButton = document.getElementById('view-user-profile-button'),
+  allProjects = await Projects.read(),
+  projects = allProjects.forUser(user.id),
+  listUi   = document.getElementById('list');
+  
   viewUserProfileButton.addEventListener('click', async (event) => {
     event.preventDefault();
     await Qworum.eval(
@@ -40,45 +43,13 @@ async function build() {
     );
   });
 
-  // user has signed in?
-  const user = await Qworum.getData(['@', 'user', 'profile']);
-  // alert(`user: ${user}`, !!user);
-  if (!user?.value?.username) {
-    // user hasn't signed in
-    console.debug('sign in');
-    await signIn();
-  } else {
-    // user has signed in
-    console.debug('list projects');
-    await renderPage();
-  }
-}
-
-
-async function signIn() {
-  await Qworum.eval(
-    Script(
-      Sequence(
-        // Sign in and store user info
-        Call(['@', 'user'], `${authServiceUrl}sign-in/`),
-
-        // Return to current URL
-        Goto(),
-      ),
-    )
-  );
-}
-
-async function renderPage() {
-  const 
-  projects = await Projects.read(),
-  listUi   = document.getElementById('list');
-
   document.querySelector('section.hide#user-profile').className = 'show';
 
   console.debug(`[home] projects:`, projects);
-  if(projects.projects.length > 0)document.querySelector('section.hide#projects').className = 'show';
-  for (const p of projects.projects) {
+  if(projects.length > 0)document.querySelector('section.hide#projects').className = 'show';
+
+  // List of projects
+  for (const p of projects) {
 
   // <md-list-item
   //     type="link"
@@ -104,6 +75,24 @@ async function renderPage() {
     projectUi.appendChild(headline);
     projectUi.appendChild(supportingText);
     projectUi.appendChild(icon);
+    // projectUi.setAttribute('type', 'link');
+
+    // console.debug(`Json(p.id)`,Json(p.id));
+
+    projectUi.addEventListener('click', async (event) => {
+      event.preventDefault();
+      // alert(`project: ${p.name}`);
+      await Qworum.eval(
+        Script(
+          Sequence(
+            Call('@', '../view-project/', {name: 'project id', value: Json(p.id)}),
+    
+            // Return to current URL
+            Goto(),
+          ),
+        )
+      );
+    });
 
     listUi.appendChild(projectUi);
 

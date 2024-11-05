@@ -1,11 +1,21 @@
 :root {
-  --md-icon-size: 48px;
+  --md-icon-size: 66px;
   /* 
   --md-sys-color-primary: olive;
   --md-ref-typeface-brand: 'Open Sans';
   --md-sys-color-secondary: tomato;
   --md-ref-typeface-plain: system-ui; 
   */
+}
+
+#view-user-profile-button {
+  height: 78px;
+  width: 78px;
+}
+
+md-outlined-icon-button#add-member > md-icon {
+  height: 55px;
+  width: 55px;
 }
 
 #user-profile  {
@@ -22,6 +32,9 @@ body {padding: 10%;}
   display: block;
 }
 
+section#projects md-list-item {
+  cursor: pointer;
+}
 
 /* body {
   font-size: 200%;

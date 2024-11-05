@@ -15,7 +15,7 @@
       import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
       document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
     </script>
-    <title>Project manager</title>
+    <title>Project management application</title>
     <link href="/assets/style/main.css" rel="stylesheet">
   </head>
   <body>
@@ -25,19 +25,28 @@
       </md-outlined-icon-button>
     </section>
 
-    <h1 class="md-typescale-display-medium">Project manager</h1>
+    <h1 class="md-typescale-display-medium">Project management application</h1>
 
     <md-outlined-button id="create-project-button">Create new project</md-outlined-button>
 
     <section id="projects" class="hide">
 
-      <h2>Projects:</h2>
+      <h2>Projects</h2>
 
       <md-list
         id="list" 
         style="max-width: 500px;"
       >
-      </md-list>
+        <!-- <md-list-item
+            type="link"
+            href="https://google.com/search?q=buy+kiwis&tbm=shop"
+            target="_blank">
+          <div slot="headline">Shop for Kiwis</div>
+          <div slot="supporting-text">This will link you out in a new tab</div>
+          <md-icon slot="end">open_in_new</md-icon>
+        </md-list-item> -->
+
+    </md-list>
 
     </section>
 
